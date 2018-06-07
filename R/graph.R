@@ -21,5 +21,6 @@ create.graph <- function(filename){
   adj.graph <- matrix(0, nrow = length(node.names), ncol = length(node.names))
   rownames(adj.graph) <- colnames(adj.graph) <- node.names
   adj.graph[edges] <- 1
-  return(adj.graph)
+  
+  assign("adj.graph", adj.graph, envir = graph.env)
 }
