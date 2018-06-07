@@ -1,12 +1,10 @@
 library(provParseR)
 library(igraph)
 
-prov.parse("testing.json")
-
-dfs <- get.all.df()
+prov.parse("../testing.json")
 
 node.names <- c(get.proc.nodes()[[1]], rownames(dfs$dataNodes), rownames(dfs$funcNodes), rownames(dfs$libs))
-edges <- as.matrix(rbind(dfs$procDataEdges, dfs$dataProcEdges, dfs$funcProcEdges))
+edges <- as.matrix(rbind(get.proc.data(), get.data.proc(), get.func.proc()))[,c("activity","entity")]
 adj.graph <- matrix(0, nrow = length(node.names), ncol = length(node.names))
 rownames(adj.graph) <- colnames(adj.graph) <- node.names
 adj.graph[edges] <- 1
