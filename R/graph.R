@@ -1,11 +1,12 @@
 library(provParseR)
 library(igraph)
 
+graph.env <- new.env(parent = emptyenv())
+graph.env$adj.graph <- NULL
 
-
-create.graph <- function(){
+create.graph <- function(filename){
   
-  prov.parse("./inst/testdata/ddg.json")
+  prov.parse(filename)
   
   node.names <- c(get.proc.nodes()$'label', 
                   get.data.nodes()$'label', 
