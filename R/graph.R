@@ -35,3 +35,8 @@ create.graph <- function(filename){
   
   assign("adj.graph", adj.graph, envir = graph.env)
 }
+
+get.spine <- function(node.id){
+  ig <- graph_from_adjacency_matrix(graph.env$adj.graph)
+  as.character(na.omit(names(dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
+}
