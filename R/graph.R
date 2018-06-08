@@ -13,18 +13,16 @@ create.graph <- function(filename){
   # Collects all the labels of all the nodes that are put into the graph
   # Type is a vector of characters
   labels <- c(get.proc.nodes()$'label', 
-                  get.data.nodes()$'label', 
-                  get.func.nodes()$'label', 
-                  get.libs()$'label')
+              get.data.nodes()$'label')
   
   # Collects the connections between nodes that exist in the prov
   # Originally there will be 3 columns including the labels, so 
   # subset out the two columns that are required for the graph
   # Type is a matrix so that the graph can be subset by it
-  edges <- as.matrix(rbind(get.proc.data(), 
-                           get.data.proc(), 
-                           get.func.proc())
-  )[, c("activity","entity")]
+  edges <- as.matrix(rbind(get.proc.data()[c("entity", "activity")], 
+                          setNames(rev((get.data.proc()[c("activity", "entity")])), 
+                                   names(get.data.proc()[c("activity", "entity")])))
+  )[,c("entity", "activity")]
   
   # Create the graph, populating each element with zeros by the length of nodes
   adj.graph <- matrix(0, nrow = length(labels), ncol = length(labels))
