@@ -8,7 +8,7 @@ create.graph <- function(filename, forward = F){
   
   # This is where our provenacne data comes from, 
   # specified by whoever calls the create graph function
-  prov.parse(filename)
+  #prov.parse(filename)
   
   # Collects all the labels of all the nodes that are put into the graph
   # Type is a vector of characters
