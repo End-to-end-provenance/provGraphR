@@ -4,11 +4,14 @@ library(igraph)
 graph.env <- new.env(parent = emptyenv())
 graph.env$adj.graph <- NULL
 
-create.graph <- function(filename, forward = F){
+## IMPORTANT ## prov.parse must be called before this function
+create.graph <- function(forward = F){
   
-  # This is where our provenacne data comes from, 
-  # specified by whoever calls the create graph function
-  #prov.parse(filename)
+  result = tryCatch({
+    get.proc.nodes()
+  }, error = function(e) {
+    stop("You must call prov.parse first")
+  })
   
   # Collects all the labels of all the nodes that are put into the graph
   # Type is a vector of characters
@@ -36,6 +39,8 @@ create.graph <- function(filename, forward = F){
   if(forward) adj.graph <- t(adj.graph)
   
   assign("adj.graph", adj.graph, envir = graph.env)
+  
+  adj.graph
 }
 
 # This functions returns the connections that nodes have 
