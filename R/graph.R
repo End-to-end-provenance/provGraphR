@@ -4,7 +4,7 @@ library(igraph)
 graph.env <- new.env(parent = emptyenv())
 graph.env$adj.graph <- NULL
 
-create.graph <- function(filename){
+create.graph <- function(filename, forward = F){
   
   # This is where our provenacne data comes from, 
   # specified by whoever calls the create graph function
@@ -33,9 +33,12 @@ create.graph <- function(filename){
   # Sets all connections to 1 by subsetting by the edges matrix
   adj.graph[edges] <- 1
   
+  if(forward) adj.graph <- t(adj.graph)
+  
   assign("adj.graph", adj.graph, envir = graph.env)
 }
 
+# This functions returns the connections that nodes have 
 get.spine <- function(node.id){
   ig <- graph_from_adjacency_matrix(graph.env$adj.graph)
   as.character(na.omit(names(dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
