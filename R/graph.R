@@ -38,7 +38,6 @@ create.graph <- function(){
 
   assign("adj.graph", adj.graph, envir = graph.env)
 
-  adj.graph
 }
 
 # This functions returns the connections that nodes have
