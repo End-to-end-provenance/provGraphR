@@ -5,6 +5,7 @@ graph.env <- new.env(parent = emptyenv())
 graph.env$adj.graph <- NULL
 
 ## IMPORTANT ## prov.parse must be called before this function
+#'@export
 create.graph <- function(){
 
   result = tryCatch({
@@ -41,6 +42,7 @@ create.graph <- function(){
 }
 
 # This functions returns the connections that nodes have
+#'@export
 get.spine <- function(node.id, forward = F){
   if(!forward){
     ig <- igraph::graph_from_adjacency_matrix(graph.env$adj.graph)
