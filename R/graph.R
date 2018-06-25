@@ -43,9 +43,9 @@ create.graph <- function(){
 # This functions returns the connections that nodes have
 get.spine <- function(node.id, forward = F){
   if(!forward){
-    ig <- graph_from_adjacency_matrix(graph.env$adj.graph)
+    ig <- igraph::graph_from_adjacency_matrix(graph.env$adj.graph)
   } else {
-    ig <- graph_from_adjacency_matrix(t(graph.env$adj.graph))
+    ig <- igraph::graph_from_adjacency_matrix(t(graph.env$adj.graph))
   }
 
   as.character(na.omit(names(dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
