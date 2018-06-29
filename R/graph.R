@@ -1,5 +1,6 @@
 library(provParseR)
 library(igraph)
+library(Matrix)
 
 graph.env <- new.env(parent = emptyenv())
 graph.env$adj.graph <- NULL
@@ -29,13 +30,15 @@ create.graph <- function(){
   )[,c("entity", "activity")]
 
   # Create the graph, populating each element with zeros by the length of nodes
-  adj.graph <- matrix(0, nrow = length(labels), ncol = length(labels))
+  adj.graph <- Matrix(0, nrow = length(labels), ncol = length(labels), sparse =T)
 
   # Make sure the resulting matrix is labelled for grabbing the right node
   rownames(adj.graph) <- colnames(adj.graph) <- labels
 
   # Sets all connections to 1 by subsetting by the edges matrix
-  adj.graph[edges] <- 1
+  apply(edges, 1, function(edge){
+    adj.graph[edge[1], edge[2]] <<- 1
+  })
 
   assign("adj.graph", adj.graph, envir = graph.env)
 
