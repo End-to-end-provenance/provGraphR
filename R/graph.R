@@ -32,7 +32,7 @@ graph.env$adj.graph <- NULL
   )[,c("entity", "activity")]
 
   # Create the graph, populating each element with zeros by the length of nodes
-  adj.graph <- matrix(0, nrow = length(labels), ncol = length(labels))
+  adj.graph <- Matrix(0, nrow = length(labels), ncol = length(labels), sparse =T)
 
   # Make sure the resulting matrix is labelled for grabbing the right node
   rownames(adj.graph) <- colnames(adj.graph) <- labels
