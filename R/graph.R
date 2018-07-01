@@ -1,13 +1,15 @@
-library(provParseR)
-library(igraph)
-library(Matrix)
-
 graph.env <- new.env(parent = emptyenv())
-graph.env$adj.graph <- NULL
-
-## IMPORTANT ## prov.parse must be called before this function
-#'@export
-create.graph <- function(){
+graph.env$adj.graph <- NA
+#' creates an adjacency graph from the nodes in provParseR
+#'
+#' prov.parse must be called before this function
+#'
+#' @return nothing
+#' @name create.graph
+#'
+#' @import provParseR
+#' @import Matrix
+.create.graph <- function(){
 
   result = tryCatch({
     get.proc.nodes()
@@ -44,9 +46,26 @@ create.graph <- function(){
 
 }
 
-# This functions returns the connections that nodes have
-#'@export
+#' Returns lineage of provided node
+#' 
+#' @param node.id This is a label for a node that the lineage is
+#' being requested for
+#'
+#' @param forward Logical that states whether or not to transpose
+#' the graph allowing the function to search forward or backward
+#' in lineage
+#' 
+#' @return a vector of characters, each will be a different node label
+#' 
+#' @export
+#' @import igraph
+#' @importFrom stats na.omit setNames
 get.spine <- function(node.id, forward = F){
+  
+  if(is.na(graph.env$adj.graph)) {
+    .create.graph()
+  }
+  
   if(!forward){
     ig <- igraph::graph_from_adjacency_matrix(graph.env$adj.graph)
   } else {

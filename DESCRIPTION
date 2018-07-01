@@ -7,7 +7,7 @@ Authors@R: c(
     person("Emery", "Boose", email = "boose@fas.harvard.edu", role = "cre") 
     )
 Description: Used with provenance that follows the W3C prov.json format that has been parsed by provParseR.
-Depends: R (>= 3.5.0), igraph
+Depends: R (>= 3.5.0), igraph, Matrix, provParseR, stats
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
