@@ -2,10 +2,9 @@
 % Please edit documentation in R/graph.R
 \name{create.graph}
 \alias{create.graph}
-\alias{.create.graph}
 \title{creates an adjacency graph from the nodes in provParseR}
 \usage{
-.create.graph()
+create.graph()
 }
 \value{
 nothing
