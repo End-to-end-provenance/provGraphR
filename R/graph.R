@@ -1,5 +1,5 @@
 graph.env <- new.env(parent = emptyenv())
-graph.env$adj.graph <- NA
+graph.env$adj.graph <- NULL
 #' creates an adjacency graph from the nodes in provParseR
 #'
 #' prov.parse must be called before this function
@@ -62,7 +62,7 @@ graph.env$adj.graph <- NA
 #' @importFrom stats na.omit setNames
 get.spine <- function(node.id, forward = F){
   
-  if(is.na(graph.env$adj.graph)) {
+  if(is.null(graph.env$adj.graph)) {
     .create.graph()
   }
   
