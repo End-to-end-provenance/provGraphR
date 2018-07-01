@@ -40,6 +40,7 @@ graph.env$adj.graph <- NULL
   # Sets all connections to 1 by subsetting by the edges matrix
   apply(edges, 1, function(edge){
     adj.graph[edge[1], edge[2]] <<- 1
+    print(paste(edge[1], "is going to ", edge[2], sep = ""))
   })
 
   assign("adj.graph", adj.graph, envir = graph.env)
