@@ -10,6 +10,7 @@ graph.env$adj.graph <- NULL
 #'
 #' @import provParseR
 #' @import Matrix
+#' @export
 create.graph <- function(){
 
   result = tryCatch({
