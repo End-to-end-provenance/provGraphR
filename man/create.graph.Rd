@@ -12,3 +12,7 @@ nothing
 \description{
 prov.parse must be called before this function
 }
+\examples{
+provParseR::prov.parse(system.file("testdata", "prov.json", package = "provGraphR"))
+create.graph()
+}

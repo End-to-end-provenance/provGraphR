@@ -11,6 +11,9 @@ graph.env$adj.graph <- NULL
 #' @import provParseR
 #' @import Matrix
 #' @export
+#' @examples 
+#' provParseR::prov.parse(system.file("testdata", "prov.json", package = "provGraphR"))
+#' create.graph()
 create.graph <- function(){
 
   result = tryCatch({
@@ -62,6 +65,10 @@ create.graph <- function(){
 #' @export
 #' @import igraph
 #' @importFrom stats na.omit setNames
+#' @examples 
+#' provParseR::prov.parse(system.file("testdata", "prov.json", package = "provGraphR"))
+#' create.graph()
+#' get.spine ("d33")
 get.spine <- function(node.id, forward = F){
   
   if(!forward){

@@ -4,10 +4,12 @@ Version: 0.1.0.9000
 Authors@R: c(
     person("Orenna", "Brand", email = "o.brand@columbia.edu", role = "aut"),
     person("Joseph", "Wonsil", email = "jwonsil@carthage.edu", role = "aut"),
-    person("Emery", "Boose", email = "boose@fas.harvard.edu", role = "cre") 
+    person("Emery", "Boose", email = "boose@fas.harvard.edu", role = "aut"), 
+    person("Barbara", "Lerner", email = "blerner@mtholyoke.edu", role = "cre") 
     )
 Description: Used with provenance that follows the W3C prov.json format that has been parsed by provParseR.
 Depends: R (>= 3.5.0), igraph, Matrix, provParseR, stats
+Suggests: testthat
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
 LazyData: true
