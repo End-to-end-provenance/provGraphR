@@ -20,3 +20,8 @@ a vector of characters, each will be a different node label
 \description{
 Returns lineage of provided node
 }
+\examples{
+provParseR::prov.parse(system.file("testdata", "prov.json", package = "provGraphR"))
+create.graph()
+get.spine ("d33")
+}
