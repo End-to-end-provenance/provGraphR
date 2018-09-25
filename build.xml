@@ -36,8 +36,8 @@
     </target>
 
     <target name="clean">
-        <delete dir="provGraphR.Rcheck" verbose="true"/>
-        <delete file="${tarfile}" verbose="true"/>
+        <delete dir="provGraphR.Rcheck" verbose="false"/>
+        <delete file="${tarfile}" verbose="false"/>
     </target>
 
 	
