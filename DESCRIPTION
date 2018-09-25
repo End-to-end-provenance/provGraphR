@@ -1,6 +1,6 @@
 Package: provGraphR
-Title: creates adjacency matrices for lineage searches
-Version: 0.1.0.9000
+Title: Creates Adjacency Matrices for Lineage Searches
+Version: 0.1.1
 Authors@R: c(
     person("Orenna", "Brand", email = "o.brand@columbia.edu", role = "aut"),
     person("Joseph", "Wonsil", email = "jwonsil@carthage.edu", role = "aut"),
