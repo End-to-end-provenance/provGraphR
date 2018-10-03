@@ -1,6 +1,6 @@
 Package: provGraphR
-Title: creates adjacency matrices for lineage searches
-Version: 0.1.0.9000
+Title: Creates Adjacency Matrices for Lineage Searches
+Version: 0.1.1
 Authors@R: c(
     person("Orenna", "Brand", email = "o.brand@columbia.edu", role = "aut"),
     person("Joseph", "Wonsil", email = "jwonsil@carthage.edu", role = "aut"),
@@ -8,7 +8,11 @@ Authors@R: c(
     person("Barbara", "Lerner", email = "blerner@mtholyoke.edu", role = "cre") 
     )
 Description: Used with provenance that follows the W3C prov.json format that has been parsed by provParseR.
-Depends: R (>= 3.5.0), igraph, Matrix, provParseR, stats
+Depends: R (>= 3.5.0)
+Imports:
+  igraph,
+  Matrix,
+  provParseR
 Suggests: testthat
 License: GPL-3 | file LICENSE
 Encoding: UTF-8

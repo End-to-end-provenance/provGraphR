@@ -3,4 +3,4 @@
 .RData
 /.project
 /provGraphR.Rcheck/
-/provGraphR_0.1.0.9000.tar.gz
+*.tar.gz
