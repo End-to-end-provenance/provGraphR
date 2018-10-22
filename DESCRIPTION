@@ -7,7 +7,9 @@ Authors@R: c(
     person("Emery", "Boose", email = "boose@fas.harvard.edu", role = "aut"), 
     person("Barbara", "Lerner", email = "blerner@mtholyoke.edu", role = "cre") 
     )
-Description: Used with provenance that follows the W3C prov.json format that has been parsed by provParseR.
+Description: Creates and manages a provenance graph corresponding to the provenance created by provR
+    or RDataTracker.  This is an extension of the W3C PROV JSON format.  The exact format of the JSON files is described in 
+    \url{https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf}.
 Depends: R (>= 3.5.0)
 Imports:
   igraph,
