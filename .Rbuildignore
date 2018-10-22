@@ -3,3 +3,4 @@
 .gitignore
 build.xml
 .*\.tar\.gz
+.travis.yml

@@ -17,7 +17,8 @@
 #' @param prov.input This is either a file name or a string containing provenance
 #'   collected by RDataTracker or provR.  If this parameter is
 #'   missing, and prov.parse has been called previously, that parsed provenance
-#'   will be used.
+#'   will be used.  The exact format of the JSON files is described in 
+#'   \href{https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf}{ExtendingProvJson.pdf}.
 #' @param isFile A logical value indicating whether prov.input should be treated as a file name (isFile=TRUE) 
 #'   or a string containing provenance (isFile=False). If prov.input is NULL, this parameter is ignored.
 #' 
