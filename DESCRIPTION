@@ -9,7 +9,7 @@ Authors@R: c(
     )
 Description: Creates and manages a provenance graph corresponding to the provenance created by provR
     or RDataTracker.  This is an extension of the W3C PROV JSON format.  The exact format of the JSON files is described in 
-    \url{https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf}.
+    https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf.
 Depends: R (>= 3.5.0)
 Imports:
   igraph,

@@ -10,7 +10,7 @@ get.lineage(adj.graph, node.id, forward = F)
 \item{adj.graph}{An adjacency graph to get the lineage from.  The
 graph can be created by a call to create.graph.}
 
-\item{node.id}{This is a string id for a node that the lineage is
+\item{node.id}{The string id for a node that the lineage is
 being requested for}
 
 \item{forward}{Logical that states whether the search is going forward
@@ -18,12 +18,14 @@ through the graph from the provided node, or backwards.}
 }
 \value{
 get.lineage returns the forward or backward lineage of the specified node.  The lineage
-  is represented as a vector of character, with each being a different node label.
+  is represented as a vector of strings, with each string being the id of a node in the lineage.
+  The first entry in the returned vector is the node.id passed in.  The remaining entries
+  form a path either forward or backward through the adjacency graph.
 }
 \description{
-get.lineage returns the lineage of the provided node.  Forward lineage identifies
-everything that depends on the provided node.  Backward lineage identifies
-everything the provided node depends on.
+get.lineage returns either the list of nodes that the provided node depends
+on (backward lineage) or the list of nodes that depend on the provided node 
+(forward lineage).
 }
 \details{
 Most commonly, the node passed in is a data node representing either a variable,
