@@ -33,10 +33,10 @@
 create.graph <- function(prov.input = NULL, isFile = T){
 
   if (!is.null (prov.input)) {
-    provParseR::prov.parse (prov.input, isFile)
+    prov <- provParseR::prov.parse (prov.input, isFile)
   }
   
-  proc.nodes <- provParseR::get.proc.nodes()
+  proc.nodes <- provParseR::get.proc.nodes(prov)
   if (is.null (proc.nodes)) {
     warning ("There is no provenance to create a graph from.")
     return (NULL)
@@ -44,14 +44,14 @@ create.graph <- function(prov.input = NULL, isFile = T){
 
   # Collects all the ids of all the nodes that are put into the graph
   # Type is a vector of characters
-  ids <- c(provParseR::get.proc.nodes()$'id', provParseR::get.data.nodes()$'id')
+  ids <- c(provParseR::get.proc.nodes(prov)$'id', provParseR::get.data.nodes(prov)$'id')
 
   # Collects the connections between nodes that exist in the prov
   # Originally there will be 3 columns including the ids, so
   # subset out the two columns that are required for the graph
   # Type is a matrix so that the graph can be subset by it
-  proc.data.edges <- provParseR::get.proc.data()[c("entity", "activity")]
-  data.proc.edges <- provParseR::get.data.proc()[c("activity", "entity")]
+  proc.data.edges <- provParseR::get.proc.data(prov)[c("entity", "activity")]
+  data.proc.edges <- provParseR::get.data.proc(prov)[c("activity", "entity")]
   edges <- as.matrix(rbind(proc.data.edges,
                            stats::setNames(rev(data.proc.edges), names(data.proc.edges))))
                   
