@@ -8,7 +8,7 @@ create.graph(prov.input = NULL, isFile = T)
 }
 \arguments{
 \item{prov.input}{This is either a file name or a string containing provenance
-collected by RDataTracker or provR.  If this parameter is
+collected by rdt or rdtLite.  If this parameter is
 missing, and prov.parse has been called previously, that parsed provenance
 will be used.  The exact format of the JSON files is described in 
 \href{https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf}{ExtendingProvJson.pdf}.}
