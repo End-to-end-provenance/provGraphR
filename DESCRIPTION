@@ -7,9 +7,10 @@ Authors@R: c(
     person("Emery", "Boose", email = "boose@fas.harvard.edu", role = "aut"), 
     person("Barbara", "Lerner", email = "blerner@mtholyoke.edu", role = "cre") 
     )
-Description: Creates and manages a provenance graph corresponding to the provenance created by rdt
-    or rdtLite.  This is an extension of the W3C PROV JSON format.  The exact format of the JSON files is described in 
-    https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf.
+Description: Creates and manages a provenance graph corresponding to the 
+    provenance created by rdt or rdtLite.  This is an extension of the 
+    W3C PROV JSON format.  The exact format of the JSON files is described 
+    in <https://github.com/End-to-end-provenance/ExtendedProvJson>.
 Depends: R (>= 3.5.0)
 Imports:
   igraph,
