@@ -5,7 +5,6 @@ library(testthat)
 # no procedure nodes
 test_that( "no procedure nodes", {
 	test.data.file <- system.file("testdata", "empty.json", package = "provGraphR")
-	expect_warning(create.graph(test.data.file))
 	expect_null(create.graph(test.data.file))
 })
 
