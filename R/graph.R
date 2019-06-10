@@ -37,8 +37,7 @@ create.graph <- function(prov.input = NULL, isFile = T){
   }
   
   proc.nodes <- provParseR::get.proc.nodes(prov)
-  if (is.null (proc.nodes)) {
-    warning ("There is no provenance to create a graph from.")
+  if (is.null (proc.nodes) || nrow(proc.nodes) == 0) {
     return (NULL)
   }
 
