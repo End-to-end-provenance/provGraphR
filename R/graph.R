@@ -70,7 +70,9 @@ create.graph <- function(prov.input = NULL, isFile = T){
   data.proc.edges <- provParseR::get.data.proc(prov)[c("activity", "entity")]
   edges <- as.matrix(rbind(proc.data.edges,
                            stats::setNames(rev(data.proc.edges), names(data.proc.edges))))
-                  
+  
+  if (nrow(edges) == 0) return (NULL)
+                   
   # Create the graph, populating each element with zeros by the length of nodes
   adj.graph <- Matrix::Matrix(0, nrow = length(ids), ncol = length(ids), sparse =T)
 
