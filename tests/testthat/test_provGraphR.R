@@ -8,6 +8,12 @@ test_that( "no procedure nodes", {
 	expect_null(create.graph(test.data.file))
 })
 
+# no proc-data or data-proc edges
+test_that( "no data edges", {
+  test.data.file <- system.file("testdata", "no-data-edges.json", package = "provGraphR")
+  expect_null(create.graph(test.data.file))
+})
+
 ## Loading test data
 test.data.file <- system.file("testdata", "prov.json", package = "provGraphR")
 #prov.parse(test.data.file)
