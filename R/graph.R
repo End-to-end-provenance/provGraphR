@@ -80,11 +80,6 @@ create.graph <- function(prov.input = NULL, isFile = T){
   rownames(adj.graph) <- colnames(adj.graph) <- ids
 
   # Sets all connections to 1 by subsetting by the edges matrix
-  print ("edges")
-  print (edges)
-  print (paste("colnames(adj.graph) =", colnames(adj.graph)))
-  print("adj.graph")
-  print (adj.graph)
   apply(edges, 1, function(edge){
     adj.graph[edge[1], edge[2]] <<- 1
   })
