@@ -34,8 +34,8 @@ or file.  Backward lineage reports everything that contributed to the variable's
 value, the contents of an output file or plot.
 }
 \examples{
-adj.graph <- create.graph(system.file("testdata", "prov.json", package = "provGraphR"))
-get.lineage (adj.graph, "d33")
+adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
+get.lineage (adj.graph, "d24")
 
 }
 \seealso{

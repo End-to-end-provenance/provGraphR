@@ -46,7 +46,7 @@
 #'
 #' @export
 #' @examples 
-#' create.graph(system.file("testdata", "prov.json", package = "provGraphR"))
+#' create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 create.graph <- function(prov.input = NULL, isFile = T){
 
   if (!is.null (prov.input)) {
@@ -54,8 +54,7 @@ create.graph <- function(prov.input = NULL, isFile = T){
   }
   
   proc.nodes <- provParseR::get.proc.nodes(prov)
-  if (is.null (proc.nodes)) {
-    warning ("There is no provenance to create a graph from.")
+  if (is.null (proc.nodes) || nrow(proc.nodes) == 0) {
     return (NULL)
   }
 
@@ -71,7 +70,9 @@ create.graph <- function(prov.input = NULL, isFile = T){
   data.proc.edges <- provParseR::get.data.proc(prov)[c("activity", "entity")]
   edges <- as.matrix(rbind(proc.data.edges,
                            stats::setNames(rev(data.proc.edges), names(data.proc.edges))))
-                  
+  
+  if (nrow(edges) == 0) return (NULL)
+                   
   # Create the graph, populating each element with zeros by the length of nodes
   adj.graph <- Matrix::Matrix(0, nrow = length(ids), ncol = length(ids), sparse =T)
 
@@ -113,8 +114,8 @@ create.graph <- function(prov.input = NULL, isFile = T){
 #' 
 #' @export
 #' @examples 
-#' adj.graph <- create.graph(system.file("testdata", "prov.json", package = "provGraphR"))
-#' get.lineage (adj.graph, "d33")
+#' adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
+#' get.lineage (adj.graph, "d24")
 #' 
 #' @seealso \code{\link{create.graph}}
 get.lineage <- function(adj.graph, node.id, forward = F){
