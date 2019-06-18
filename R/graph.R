@@ -46,7 +46,7 @@
 #'
 #' @export
 #' @examples 
-#' create.graph(system.file("testdata", "prov.json", package = "provGraphR"))
+#' create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 create.graph <- function(prov.input = NULL, isFile = T){
 
   if (!is.null (prov.input)) {
@@ -114,8 +114,8 @@ create.graph <- function(prov.input = NULL, isFile = T){
 #' 
 #' @export
 #' @examples 
-#' adj.graph <- create.graph(system.file("testdata", "prov.json", package = "provGraphR"))
-#' get.lineage (adj.graph, "d33")
+#' adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
+#' get.lineage (adj.graph, "d24")
 #' 
 #' @seealso \code{\link{create.graph}}
 get.lineage <- function(adj.graph, node.id, forward = F){
