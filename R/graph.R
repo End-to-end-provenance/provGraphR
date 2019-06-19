@@ -128,3 +128,35 @@ get.lineage <- function(adj.graph, node.id, forward = F){
   as.character(stats::na.omit(names(igraph::dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
 }
 
+#' get.creator finds the node that creates the given data node
+#' 
+#' A data node can represent a variable, a file, a plot, or a warning or error.  The creator
+#' of the data node will be a procedure node representing the statment
+#' that assigned the variable, wrote to the file, created the plot, or 
+#' resulted in the error or warning.
+#' 
+#' @param adj.graph the adjacency matrix
+#' 
+#' @param node.id the id of the data node.
+#' 
+#' @return the id of the procedure node that created the specified data node.  
+#'   Returns NULL if there is no node with the given id, the id is not for 
+#'   a data node, or the data node does not have a creator.  The last case
+#'   can occur, for example, if the data node represents an input file.
+#' 
+#' @export
+get.creator <- function (adj.graph, node.id) {
+  # Make sure it is a data node
+  if (!startsWith (node.id, "d")) {
+    return (NULL)
+  }
+  
+  # Check that there is a node with the name
+  node.names <- rownames (adj.graph)
+  if (!node.id %in% node.names) return (NULL)
+  
+  proc.node <- attr(which(adj.graph[node.id,] == 1, arr.ind=TRUE), "names")
+  if (length(proc.node) > 1) warning ("get.creator found more than one creator")
+  if (length(proc.node) == 0) return (NULL)
+  return (proc.node)
+}
