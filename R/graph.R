@@ -128,6 +128,8 @@ get.lineage <- function(adj.graph, node.id, forward = F){
   as.character(stats::na.omit(names(igraph::dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
 }
 
+#' Get creators and users of data
+#' 
 #' get.creator finds the node that creates the given data node
 #' 
 #' A data node can represent a variable, a file, a plot, or a warning or error.  The creator
@@ -145,6 +147,7 @@ get.lineage <- function(adj.graph, node.id, forward = F){
 #'   can occur, for example, if the data node represents an input file.
 #' 
 #' @export
+#' @rdname proc
 get.creator <- function (adj.graph, node.id) {
   # Make sure it is a data node
   if (!startsWith (node.id, "d")) {
