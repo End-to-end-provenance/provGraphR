@@ -50,11 +50,9 @@ read from.
 adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 get.used.data (adj.graph, "p11")
 
-adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 get.created.data (adj.graph, "p11")
 
-adj.graph <- create.graph(system.file("testdata", "simple.json", package = "provGraphR"))
-get.created.data (adj.graph, "p5")
+get.updated.data (adj.graph, "p5")
 
 }
 \seealso{

@@ -42,7 +42,6 @@ resulted in the error or warning.
 adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 get.creator (adj.graph, "d1")
 
-adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 get.users (adj.graph, "d1")
 
 }

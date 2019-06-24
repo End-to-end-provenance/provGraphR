@@ -90,7 +90,7 @@ methods::setMethod ("initialize",
 #'
 #' @export
 #' @examples 
-#' create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
+#' adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 #' @rdname creategraph
 create.graph <- function(prov.input = NULL, isFile = T){
 
@@ -245,7 +245,6 @@ get.creator <- function (adj.graph, data.node.id) {
 #' 
 #' @export
 #' @examples 
-#' adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 #' get.users (adj.graph, "d1")
 #' 
 #' @seealso \code{\link{create.graph}}
@@ -325,7 +324,6 @@ get.used.data <- function (adj.graph, proc.node.id) {
 #' 
 #' @export
 #' @examples 
-#' adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 #' get.created.data (adj.graph, "p11")
 #' 
 #' @seealso \code{\link{create.graph}}
@@ -357,8 +355,7 @@ get.created.data <- function (adj.graph, proc.node.id) {
 #' 
 #' @export
 #' @examples 
-#' adj.graph <- create.graph(system.file("testdata", "simple.json", package = "provGraphR"))
-#' get.created.data (adj.graph, "p5")
+#' get.updated.data (adj.graph, "p5")
 #' 
 #' @seealso \code{\link{create.graph}}
 #' @rdname data

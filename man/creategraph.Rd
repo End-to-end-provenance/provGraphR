@@ -46,5 +46,5 @@ the input operation.
 The lineage of any data value can be traced through this graph by calling \code{\link{get.lineage}}.
 }
 \examples{
-create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
+adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 }
