@@ -20,13 +20,13 @@
 			"rdt:language": "R",
 			"rdt:langVersion": "R version 3.6.0 (2019-04-26)",
 			"rdt:script": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/empty.R",
-			"rdt:scriptTimeStamp": "2019-06-18T14.38.44EDT",
+			"rdt:scriptTimeStamp": "2019-06-19T14.12.12EDT",
 			"rdt:totalElapsedTime": "0.0",
 			"rdt:sourcedScripts": "",
 			"rdt:sourcedScriptTimeStamps": "",
 			"rdt:workingDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts",
 			"rdt:provDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/prov_empty",
-			"rdt:provTimestamp": "2019-06-18T14.46.30EDT",
+			"rdt:provTimestamp": "2019-06-24T10.51.49EDT",
 			"rdt:hashAlgorithm": "md5"
 		},
 

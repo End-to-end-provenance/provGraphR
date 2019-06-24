@@ -7,8 +7,8 @@
 get.lineage(adj.graph, node.id, forward = F)
 }
 \arguments{
-\item{adj.graph}{An adjacency graph to get the lineage from.  The
-graph can be created by a call to create.graph.}
+\item{adj.graph}{An adjacency graph to get the lineage from, or a ProvGraphInfo object.  The
+object can be created by a call to create.graph.}
 
 \item{node.id}{The string id for a node that the lineage is
 being requested for}

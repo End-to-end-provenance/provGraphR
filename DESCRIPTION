@@ -15,7 +15,7 @@ Depends: R (>= 3.5.0)
 Imports:
   igraph,
   Matrix,
-  provParseR
+  provParseR (>= 0.2)
 Suggests: testthat
 License: GPL-3 | file LICENSE
 Encoding: UTF-8

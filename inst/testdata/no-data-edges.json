@@ -16,7 +16,7 @@
 		"rdt:p1": {
 			"rdt:name": "no-data-edges.R",
 			"rdt:type": "Start",
-			"rdt:elapsedTime": "0.826",
+			"rdt:elapsedTime": "0.788",
 			"rdt:scriptNum": "NA",
 			"rdt:startLine": "NA",
 			"rdt:startCol": "NA",
@@ -53,13 +53,13 @@
 			"rdt:language": "R",
 			"rdt:langVersion": "R version 3.6.0 (2019-04-26)",
 			"rdt:script": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/no-data-edges.R",
-			"rdt:scriptTimeStamp": "2019-06-18T14.40.11EDT",
-			"rdt:totalElapsedTime": "0.836",
+			"rdt:scriptTimeStamp": "2019-06-19T14.12.12EDT",
+			"rdt:totalElapsedTime": "0.798",
 			"rdt:sourcedScripts": "",
 			"rdt:sourcedScriptTimeStamps": "",
 			"rdt:workingDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts",
 			"rdt:provDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/prov_no-data-edges",
-			"rdt:provTimestamp": "2019-06-18T14.46.31EDT",
+			"rdt:provTimestamp": "2019-06-24T10.51.51EDT",
 			"rdt:hashAlgorithm": "md5"
 		},
 

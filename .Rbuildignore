@@ -1,6 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .gitignore
+.project
 build.xml
 .*\.tar\.gz
+.*\.Rcheck
 .travis.yml
