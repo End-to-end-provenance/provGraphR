@@ -1,6 +1,6 @@
 # provGraphR
 
-Creates an adjacency matrix from the provenance object created by provParseR. The adjacency matrix can then be used to quickly traverse the provenance graph.
+Creates an adjacency matrix from the provenance object returned by provParseR. The adjacency matrix can then be used to quickly traverse the provenance graph.
 
 # Installation
 Install from GitHub:
@@ -46,6 +46,6 @@ get.users
 
 LINEAGE
 
-# Forward or backward lineage of a data node
+# Forward or backward lineage of a node
 get.lineage
 ```
