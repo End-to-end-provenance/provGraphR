@@ -173,7 +173,50 @@ get.lineage <- function(adj.graph, node.id, forward = F){
     ig <- igraph::graph_from_adjacency_matrix(Matrix::t(adj.graph))
   }
 
-  as.character(stats::na.omit(names(igraph::dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
+  lineage <- as.character(stats::na.omit(names(igraph::dfs(ig, node.id, "out" , unreachable = FALSE)$order)))
+  
+  # At this point we have all the right nodes.  We want to return them
+  # sorted by proc id so they appear in the order that they executed.
+  # The data nodes need to be inserted in the right order.
+  
+  proc.nodes <- lineage [startsWith(lineage, "p")]
+  data.nodes <- lineage [startsWith(lineage, "d")]
+      
+  # Sort the proc nodes by their id
+  sorted.proc.nodes <- sort (proc.nodes, decreasing = !forward)
+  
+  # Find out which nodes created each of the data nodes
+  data.creators <- sapply (data.nodes, 
+      function (data.node) {
+        get.creator (adj.graph, data.node)
+      }
+  )
+
+  # Find out the position of the data creators in the sorted list
+  data.creator.indices <- match (data.creators, sorted.proc.nodes)
+
+  # Add the data nodes to the end of the sorted proc nodes
+  lineage <- c(sorted.proc.nodes, data.nodes)
+  
+  # Move the data nodes to be adjacent to the proc nodes that produce them.
+  if (forward) {
+    # Data node should follow its producer
+    # The first node's data creator is not part of the lineage, and we want
+    # it to come first.  The match above will have put NA for the first data creator
+    # index.
+    data.creator.indices[1] <- 0
+    
+    # Determine the order that we want the sorted lineage to be in.
+    id <- c (seq_along(sorted.proc.nodes), data.creator.indices + 0.5)
+  }
+  else {
+    # Data node should precede its producer
+    id <- c (seq_along(sorted.proc.nodes), data.creator.indices - 0.5)
+  }
+  
+  # Now sort the lineage based on the order we just produced.
+  sorted.lineage <- lineage[order(id)]
+  return (sorted.lineage)
 }
 
 #' Get provenance used to create the adjacency graph

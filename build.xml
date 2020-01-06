@@ -48,6 +48,12 @@
 		<antcall target="json">
 			<param name="theFile" value="simple.R"/>
 		</antcall>
+		<antcall target="json">
+			<param name="theFile" value="order.R"/>
+		</antcall>
+		<antcall target="json">
+			<param name="theFile" value="ForwardOrder.R"/>
+		</antcall>
 	</target>
 	
 	<target name="json">
