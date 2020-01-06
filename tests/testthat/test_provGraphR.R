@@ -108,3 +108,17 @@ test_that ("larger test case", {
     c("d3", "p6", "d5", "p7", "d6", "p14", "d13"))
 })
 
+## Testing order
+test_that ("order", {
+      test.data.file <- system.file("testdata", "order.json", package = "provGraphR")
+      adj.graph <- create.graph(test.data.file)
+      lineage <- get.lineage (adj.graph, "d4")
+      expect_equal (lineage, 
+          c("d4", "p5", "d3", "p4", "d2", "p3", "d1", "p2"))
+      
+      test.data.file <- system.file("testdata", "ForwardOrder.json", package = "provGraphR")
+      adj.graph <- create.graph(test.data.file)
+      lineage <- get.lineage (adj.graph, "d1", forward=TRUE)
+      expect_equal (lineage, 
+          c("d1", "p3", "d2", "p4", "d3", "p5", "d4"))
+})
