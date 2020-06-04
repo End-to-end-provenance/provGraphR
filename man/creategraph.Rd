@@ -2,22 +2,26 @@
 % Please edit documentation in R/graph.R
 \name{create.graph}
 \alias{create.graph}
+\alias{get.prov}
 \title{Create provenance graph}
 \usage{
-create.graph(prov.input = NULL, isFile = T)
+create.graph(prov.input = NULL, isFile = TRUE)
+
+get.prov(adj.graph)
 }
 \arguments{
-\item{prov.input}{This is either a file name or a string containing provenance
-collected by rdt or rdtLite.  If this parameter is
-missing, and prov.parse has been called previously, that parsed provenance
-will be used.  The exact format of the JSON files is described in 
-\href{https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf}{ExtendingProvJson.pdf}.}
+\item{prov.input}{This is either a file name, a string containing provenance
+collected by rdt or rdtLite, or parsed provenance.  The exact format of the JSON files is described in 
+\href{https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md}{ExtendedProvJson.md}.}
 
 \item{isFile}{A logical value indicating whether prov.input should be treated as a file name (isFile=TRUE) 
-or a string containing provenance (isFile=False). If prov.input is NULL, this parameter is ignored.}
+or a string containing provenance (isFile=False). If prov.input is not a string, this parameter is ignored.}
+
+\item{adj.graph}{the adjacency graph}
 }
 \value{
-create.graph returns a matrix representation of the graph.  There is a row and a column for each
+create.graph returns an object that contains the parsed provenance and a matrix representation of the graph.
+  In the matrix, there is a row and a column for each
   data and procedure node in the graph.  The values in the matrix are either 1 or 0.
   A 1 indicates that there is an edge for the column node to the row node.  create.graph returns
   NULL if there is no provenance available.
@@ -26,6 +30,9 @@ create.graph returns a matrix representation of the graph.  There is a row and a
 create.graph uses saved provenance to create an adjacency 
 graph that captures the dependencies between
 data and the R statements that use or modify the data.
+
+get.prov returns the provenance that corresponds with the given 
+adjacency graph
 }
 \details{
 The graph contains a node for each R statement that is executed, for each 
@@ -39,5 +46,5 @@ the input operation.
 The lineage of any data value can be traced through this graph by calling \code{\link{get.lineage}}.
 }
 \examples{
-create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
+adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 }
