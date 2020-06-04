@@ -34,7 +34,7 @@
 		"rdt:p1": {
 			"rdt:name": "ForwardOrder.R",
 			"rdt:type": "Start",
-			"rdt:elapsedTime": "0.865",
+			"rdt:elapsedTime": "0.802",
 			"rdt:scriptNum": "NA",
 			"rdt:startLine": "NA",
 			"rdt:startCol": "NA",
@@ -44,7 +44,7 @@
 		"rdt:p2": {
 			"rdt:name": "a <- 1",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": "0.129",
+			"rdt:elapsedTime": "0.13",
 			"rdt:scriptNum": 1,
 			"rdt:startLine": 1,
 			"rdt:startCol": 1,
@@ -54,7 +54,7 @@
 		"rdt:p3": {
 			"rdt:name": "b <- a + 1",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": "0.098",
+			"rdt:elapsedTime": "0.109",
 			"rdt:scriptNum": 1,
 			"rdt:startLine": 2,
 			"rdt:startCol": 1,
@@ -64,7 +64,7 @@
 		"rdt:p4": {
 			"rdt:name": "d <- a + 2",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": "0.076",
+			"rdt:elapsedTime": "0.078",
 			"rdt:scriptNum": 1,
 			"rdt:startLine": 3,
 			"rdt:startCol": 1,
@@ -74,7 +74,7 @@
 		"rdt:p5": {
 			"rdt:name": "cc <- a + b + d",
 			"rdt:type": "Operation",
-			"rdt:elapsedTime": "0.077",
+			"rdt:elapsedTime": "0.07",
 			"rdt:scriptNum": 1,
 			"rdt:startLine": 4,
 			"rdt:startCol": 1,
@@ -84,7 +84,7 @@
 		"rdt:p6": {
 			"rdt:name": "ForwardOrder.R",
 			"rdt:type": "Finish",
-			"rdt:elapsedTime": "0.007",
+			"rdt:elapsedTime": "0.006",
 			"rdt:scriptNum": "NA",
 			"rdt:startLine": "NA",
 			"rdt:startCol": "NA",
@@ -146,13 +146,13 @@
 			"rdt:language": "R",
 			"rdt:langVersion": "R version 3.6.0 (2019-04-26)",
 			"rdt:script": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/ForwardOrder.R",
-			"rdt:scriptTimeStamp": "2020-01-06T14.57.16EST",
-			"rdt:totalElapsedTime": "1.252",
+			"rdt:scriptTimeStamp": "2020-01-06T15.43.33EST",
+			"rdt:totalElapsedTime": "1.195",
 			"rdt:sourcedScripts": "",
 			"rdt:sourcedScriptTimeStamps": "",
 			"rdt:workingDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts",
 			"rdt:provDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/prov_ForwardOrder",
-			"rdt:provTimestamp": "2020-01-06T14.58.13EST",
+			"rdt:provTimestamp": "2020-01-14T14.05.29EST",
 			"rdt:hashAlgorithm": "md5"
 		},
 
