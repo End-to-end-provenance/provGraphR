@@ -1,5 +1,5 @@
 # Copyright (C) President and Fellows of Harvard College and 
-# Trustees of Mount Holyoke College, 2018, 2019.
+# Trustees of Mount Holyoke College, 2018, 2019, 2020.
 
 # This program is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -14,33 +14,13 @@
 #   You should have received a copy of the GNU General Public
 #   License along with this program.  If not, see
 #   <http://www.gnu.org/licenses/>.
-
-# If methods is not imported , I get   
-#     [exec] * checking R code for possible problems ... NOTE
-#     [exec] ProvGraphInfo: no visible global function definition for ‘new’
-#     [exec] Undefined global functions or variables:
-#     [exec]   new
-#     [exec] Consider adding
-#     [exec]   importFrom("methods", "new")
-#     [exec] to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
-#     [exec] contains 'methods').
-
-# If methods is imported in either of these ways:
-## ' @import methods
-## ' @importFrom methods new
-# I get
-#[exec] * checking package dependencies ... ERROR
-#[exec] See
-#[exec] Namespace dependency not required: ‘methods’
-#[exec] 
-#[exec]   ‘/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/provGraphR.Rcheck/00check.log’
-#[exec] for details.
-#[exec] 
-#[exec] See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-#[exec] manual.
+#
+# Authors: Orenna Bran, Joe Wonsil, Emery Boose, and Barbara Lerner 
+#
 
 #' @importClassesFrom provParseR ProvInfo
 #' @importClassesFrom Matrix Matrix
+#' @importFrom methods new
 ProvGraphInfo <- methods::setClass("ProvGraphInfo",
     slots = list(
         adj.graph = "Matrix", 
@@ -78,7 +58,7 @@ methods::setMethod ("initialize",
 #'
 #' @param prov.input This is either a file name, a string containing provenance
 #'   collected by rdt or rdtLite, or parsed provenance.  The exact format of the JSON files is described in 
-#'   \href{https://github.com/End-to-end-provenance/RDataTracker/blob/development/vignettes/ExtendingProvJson.pdf}{ExtendingProvJson.pdf}.
+#'   \href{https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md}{ExtendedProvJson.md}.
 #' @param isFile A logical value indicating whether prov.input should be treated as a file name (isFile=TRUE) 
 #'   or a string containing provenance (isFile=False). If prov.input is not a string, this parameter is ignored.
 #' 
@@ -92,7 +72,7 @@ methods::setMethod ("initialize",
 #' @examples 
 #' adj.graph <- create.graph(system.file("testdata", "basic.json", package = "provGraphR"))
 #' @rdname creategraph
-create.graph <- function(prov.input = NULL, isFile = T){
+create.graph <- function(prov.input = NULL, isFile = TRUE){
 
   if (!is.null (prov.input) && is.character(prov.input)) {
     prov <- provParseR::prov.parse (prov.input, isFile)
@@ -119,7 +99,7 @@ create.graph <- function(prov.input = NULL, isFile = T){
   if (nrow(edges) == 0) return (NULL)
   
   # Create the graph, populating each element with zeros by the length of nodes
-  adj.graph <- Matrix::Matrix(0, nrow = length(ids), ncol = length(ids), sparse =T)
+  adj.graph <- Matrix::Matrix(0, nrow = length(ids), ncol = length(ids), sparse =TRUE)
   
   # Make sure the resulting matrix is labelled for grabbing the right node
   rownames(adj.graph) <- colnames(adj.graph) <- ids
@@ -164,7 +144,7 @@ create.graph <- function(prov.input = NULL, isFile = T){
 #' get.lineage (adj.graph, "d24")
 #' 
 #' @seealso \code{\link{create.graph}}
-get.lineage <- function(adj.graph, node.id, forward = F){
+get.lineage <- function(adj.graph, node.id, forward = FALSE){
   if (class (adj.graph) == "ProvGraphInfo") adj.graph <- adj.graph@adj.graph
   
   if(!forward){
