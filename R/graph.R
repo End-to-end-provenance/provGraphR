@@ -145,7 +145,9 @@ create.graph <- function(prov.input = NULL, isFile = TRUE){
 #' 
 #' @seealso \code{\link{create.graph}}
 get.lineage <- function(adj.graph, node.id, forward = FALSE){
-  if (class (adj.graph) == "ProvGraphInfo") adj.graph <- adj.graph@adj.graph
+  if (class (adj.graph) == "ProvGraphInfo") {
+    adj.graph <- adj.graph@adj.graph
+  }
   
   if(!forward){
     ig <- igraph::graph_from_adjacency_matrix(adj.graph)
@@ -192,6 +194,9 @@ get.lineage <- function(adj.graph, node.id, forward = FALSE){
   else {
     # Data node should precede its producer
     id <- c (seq_along(sorted.proc.nodes), data.creator.indices - 0.5)
+    
+    # Figure out which libraries should be loaded
+    provParseR::get.libs.needed (prov, sorted.proc.nodes)
   }
   
   # Now sort the lineage based on the order we just produced.
