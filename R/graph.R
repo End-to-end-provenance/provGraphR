@@ -1,5 +1,5 @@
 # Copyright (C) President and Fellows of Harvard College and 
-# Trustees of Mount Holyoke College, 2018, 2019, 2020.
+# Trustees of Mount Holyoke College, 2018, 2019, 2020, 2021, 2022.
 
 # This program is free software: you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -145,7 +145,7 @@ create.graph <- function(prov.input = NULL, isFile = TRUE){
 #' 
 #' @seealso \code{\link{create.graph}}
 get.lineage <- function(adj.graph, node.id, forward = FALSE){
-  if (class (adj.graph) == "ProvGraphInfo") {
+  if (inherits (adj.graph, "ProvGraphInfo")) {
     adj.graph <- adj.graph@adj.graph
   }
   
@@ -194,9 +194,6 @@ get.lineage <- function(adj.graph, node.id, forward = FALSE){
   else {
     # Data node should precede its producer
     id <- c (seq_along(sorted.proc.nodes), data.creator.indices - 0.5)
-    
-    # Figure out which libraries should be loaded
-    provParseR::get.libs.needed (prov, sorted.proc.nodes)
   }
   
   # Now sort the lineage based on the order we just produced.
@@ -243,7 +240,7 @@ get.prov <- function (adj.graph) {
 #' @seealso \code{\link{create.graph}}
 #' @rdname proc
 get.creator <- function (adj.graph, data.node.id) {
-  if (class (adj.graph) == "ProvGraphInfo") adj.graph <- adj.graph@adj.graph
+  if (inherits (adj.graph, "ProvGraphInfo")) adj.graph <- adj.graph@adj.graph
 
   # Make sure it is a data node
   if (!startsWith (data.node.id, "d")) {
@@ -278,7 +275,7 @@ get.creator <- function (adj.graph, data.node.id) {
 #' @seealso \code{\link{create.graph}}
 #' @rdname proc
 get.users <- function (adj.graph, data.node.id) {
-  if (class (adj.graph) == "ProvGraphInfo") adj.graph <- adj.graph@adj.graph
+  if (inherits (adj.graph, "ProvGraphInfo")) adj.graph <- adj.graph@adj.graph
   
   # Make sure it is a data node
   if (!startsWith (data.node.id, "d")) {
@@ -321,7 +318,7 @@ get.users <- function (adj.graph, data.node.id) {
 #' @seealso \code{\link{create.graph}}
 #' @rdname data
 get.used.data <- function (adj.graph, proc.node.id) {
-  if (class (adj.graph) == "ProvGraphInfo") adj.graph <- adj.graph@adj.graph
+  if (inherits (adj.graph, "ProvGraphInfo")) adj.graph <- adj.graph@adj.graph
   
   # Make sure it is a procedure node
   if (!startsWith (proc.node.id, "p")) {
@@ -357,7 +354,7 @@ get.used.data <- function (adj.graph, proc.node.id) {
 #' @seealso \code{\link{create.graph}}
 #' @rdname data
 get.created.data <- function (adj.graph, proc.node.id) {
-  if (class (adj.graph) == "ProvGraphInfo") adj.graph <- adj.graph@adj.graph
+  if (inherits (adj.graph, "ProvGraphInfo")) adj.graph <- adj.graph@adj.graph
   
   # Make sure it is a procedure node
   if (!startsWith (proc.node.id, "p")) {
