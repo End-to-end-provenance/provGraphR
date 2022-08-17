@@ -1,0 +1,596 @@
+{
+	"prefix": {
+		"prov": "http://www.w3.org/ns/prov#",
+		"rdt": "https://github.com/End-to-end-provenance/ExtendedProvJson/blob/master/JSON-format.md"
+	},
+
+	"agent" : {
+		"rdt:a1": {
+			"rdt:tool.name": "rdtLite",
+			"rdt:tool.version": "1.4",
+			"rdt:json.version": "2.3",
+			"rdt:args.names": [
+				"overwrite",
+				"details",
+				"snapshot.size",
+				"save.debug"
+			],
+			"rdt:args.values": [
+				"TRUE",
+				"TRUE",
+				"0",
+				"FALSE"
+			],
+			"rdt:args.types": [
+				"logical",
+				"logical",
+				"numeric",
+				"logical"
+			]
+		}
+	},
+
+	"activity" : {
+		"rdt:p1": {
+			"rdt:name": "library.R",
+			"rdt:type": "Start",
+			"rdt:elapsedTime": "0.446",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": "NA",
+			"rdt:startCol": "NA",
+			"rdt:endLine": "NA",
+			"rdt:endCol": "NA"
+		},
+		"rdt:p2": {
+			"rdt:name": "library(stringi)",
+			"rdt:type": "Operation",
+			"rdt:elapsedTime": "0.182",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": 1,
+			"rdt:startCol": 1,
+			"rdt:endLine": 1,
+			"rdt:endCol": 16
+		},
+		"rdt:p3": {
+			"rdt:name": "num <- 3",
+			"rdt:type": "Operation",
+			"rdt:elapsedTime": "0.191",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": 2,
+			"rdt:startCol": 1,
+			"rdt:endLine": 2,
+			"rdt:endCol": 8
+		},
+		"rdt:p4": {
+			"rdt:name": "s_vector <- rep(\"abc\", num)",
+			"rdt:type": "Operation",
+			"rdt:elapsedTime": "0.21",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": 3,
+			"rdt:startCol": 1,
+			"rdt:endLine": 3,
+			"rdt:endCol": 27
+		},
+		"rdt:p5": {
+			"rdt:name": "reversed <- stri_reverse(s_vector)",
+			"rdt:type": "Operation",
+			"rdt:elapsedTime": "0.146",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": 4,
+			"rdt:startCol": 1,
+			"rdt:endLine": 4,
+			"rdt:endCol": 34
+		},
+		"rdt:p6": {
+			"rdt:name": "library.R",
+			"rdt:type": "Finish",
+			"rdt:elapsedTime": "0.009",
+			"rdt:scriptNum": 1,
+			"rdt:startLine": "NA",
+			"rdt:startCol": "NA",
+			"rdt:endLine": "NA",
+			"rdt:endCol": "NA"
+		}
+	},
+
+	"entity" : {
+		"rdt:d1": {
+			"rdt:name": "num",
+			"rdt:value": "3",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[1], \"type\":[\"numeric\"]}",
+			"rdt:type": "Data",
+			"rdt:scope": "R_GlobalEnv",
+			"rdt:fromEnv": false,
+			"rdt:hash": "",
+			"rdt:timestamp": "",
+			"rdt:location": ""
+		},
+		"rdt:d2": {
+			"rdt:name": "s_vector",
+			"rdt:value": "\"abc\" \"abc\" \"abc\"",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[3], \"type\":[\"character\"]}",
+			"rdt:type": "Data",
+			"rdt:scope": "R_GlobalEnv",
+			"rdt:fromEnv": false,
+			"rdt:hash": "",
+			"rdt:timestamp": "",
+			"rdt:location": ""
+		},
+		"rdt:d3": {
+			"rdt:name": "reversed",
+			"rdt:value": "\"cba\" \"cba\" \"cba\"",
+			"rdt:valType": "{\"container\":\"vector\", \"dimension\":[3], \"type\":[\"character\"]}",
+			"rdt:type": "Data",
+			"rdt:scope": "R_GlobalEnv",
+			"rdt:fromEnv": false,
+			"rdt:hash": "",
+			"rdt:timestamp": "",
+			"rdt:location": ""
+		},
+
+		"rdt:environment": {
+			"rdt:name": "environment",
+			"rdt:architecture": "x86_64, darwin17.0",
+			"rdt:operatingSystem": "macOS Catalina 10.15.7",
+			"rdt:language": "R",
+			"rdt:langVersion": "R version 4.2.1 (2022-06-23)",
+			"rdt:ui": "2022.07.1+554 Spotted Wakerobin (desktop)",
+			"rdt:pandoc": "2.2.1 @ /usr/local/bin/pandoc",
+			"rdt:script": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/library.R",
+			"rdt:scriptTimeStamp": "2022-08-16T14.07.58EDT",
+			"rdt:scriptHash": "4549d447d22393c40274d11cb2619f3d",
+			"rdt:totalElapsedTime": "1.184",
+			"rdt:sourcedScripts": "",
+			"rdt:sourcedScriptTimeStamps": "",
+			"rdt:sourcedScriptHashes": "",
+			"rdt:workingDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts",
+			"rdt:provDirectory": "/Users/blerner/Documents/Process/DataProvenance/workspace/provGraphR/inst/testscripts/prov_library",
+			"rdt:provTimestamp": "2022-08-16T14.09.08EDT",
+			"rdt:hashAlgorithm": "md5"
+		},
+
+		"rdt:f1": {
+			"name": "stri_reverse"
+		},
+
+		"rdt:l1": {
+			"name": "base",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l2": {
+			"name": "bit",
+			"version": "4.0.4",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l3": {
+			"name": "bit64",
+			"version": "4.0.5",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l4": {
+			"name": "cli",
+			"version": "3.3.0",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l5": {
+			"name": "colorspace",
+			"version": "2.0-3",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l6": {
+			"name": "compiler",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l7": {
+			"name": "crayon",
+			"version": "1.5.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l8": {
+			"name": "datasets",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l9": {
+			"name": "digest",
+			"version": "0.6.29",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l10": {
+			"name": "dplyr",
+			"version": "1.0.9",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l11": {
+			"name": "ellipsis",
+			"version": "0.3.2",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l12": {
+			"name": "fansi",
+			"version": "1.0.3",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l13": {
+			"name": "generics",
+			"version": "0.1.2",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l14": {
+			"name": "ggplot2",
+			"version": "3.3.6",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l15": {
+			"name": "glue",
+			"version": "1.6.2",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l16": {
+			"name": "graphics",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l17": {
+			"name": "grDevices",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l18": {
+			"name": "grid",
+			"version": "4.2.1",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l19": {
+			"name": "gtable",
+			"version": "0.3.0",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l20": {
+			"name": "jsonlite",
+			"version": "1.8.0",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l21": {
+			"name": "lifecycle",
+			"version": "1.0.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l22": {
+			"name": "magrittr",
+			"version": "2.0.3",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l23": {
+			"name": "methods",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l24": {
+			"name": "munsell",
+			"version": "0.5.0",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l25": {
+			"name": "pillar",
+			"version": "1.7.0",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l26": {
+			"name": "pkgconfig",
+			"version": "2.0.3",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l27": {
+			"name": "purrr",
+			"version": "0.3.4",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l28": {
+			"name": "R6",
+			"version": "2.5.1",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l29": {
+			"name": "rdtLite",
+			"version": "1.4",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l30": {
+			"name": "rlang",
+			"version": "1.0.2",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l31": {
+			"name": "scales",
+			"version": "1.2.0",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l32": {
+			"name": "sessioninfo",
+			"version": "1.2.2",
+			"whereLoaded": "rdtLite",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l33": {
+			"name": "stats",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l34": {
+			"name": "stringi",
+			"version": "1.7.6",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l35": {
+			"name": "tibble",
+			"version": "3.1.7",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l36": {
+			"name": "tidyselect",
+			"version": "1.1.2",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l37": {
+			"name": "tools",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l38": {
+			"name": "tzdb",
+			"version": "0.3.0",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l39": {
+			"name": "utf8",
+			"version": "1.2.2",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l40": {
+			"name": "utils",
+			"version": "4.2.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l41": {
+			"name": "vctrs",
+			"version": "0.4.1",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		},
+		"rdt:l42": {
+			"name": "vroom",
+			"version": "1.5.7",
+			"whereLoaded": "preloaded",
+			"prov:type": {
+				"$": "prov:Collection",
+				"type": "xsd:QName"
+			}
+		}
+	},
+
+	"wasInformedBy" : {
+		"rdt:pp1": {
+			"prov:informant": "rdt:p1",
+			"prov:informed": "rdt:p2"
+		},
+		"rdt:pp2": {
+			"prov:informant": "rdt:p2",
+			"prov:informed": "rdt:p3"
+		},
+		"rdt:pp3": {
+			"prov:informant": "rdt:p3",
+			"prov:informed": "rdt:p4"
+		},
+		"rdt:pp4": {
+			"prov:informant": "rdt:p4",
+			"prov:informed": "rdt:p5"
+		},
+		"rdt:pp5": {
+			"prov:informant": "rdt:p5",
+			"prov:informed": "rdt:p6"
+		}
+	},
+
+	"wasGeneratedBy" : {
+		"rdt:pd1": {
+			"prov:activity": "rdt:p3",
+			"prov:entity": "rdt:d1"
+		},
+		"rdt:pd2": {
+			"prov:activity": "rdt:p4",
+			"prov:entity": "rdt:d2"
+		},
+		"rdt:pd3": {
+			"prov:activity": "rdt:p5",
+			"prov:entity": "rdt:d3"
+		}
+	},
+
+	"used" : {
+		"rdt:dp1": {
+			"prov:entity": "rdt:d1",
+			"prov:activity": "rdt:p4"
+		},
+		"rdt:dp2": {
+			"prov:entity": "rdt:d2",
+			"prov:activity": "rdt:p5"
+		},
+
+		"rdt:fp1": {
+			"prov:entity": "rdt:f1",
+			"prov:activity": "rdt:p5"
+		}
+	},
+
+	"hadMember" : {
+		"rdt:m1": {
+			"prov:collection": "rdt:l34",
+			"prov:entity": "rdt:f1"
+		}
+	}
+}

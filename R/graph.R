@@ -113,6 +113,34 @@ create.graph <- function(prov.input = NULL, isFile = TRUE){
   return (methods::new (Class = "ProvGraphInfo", prov, adj.graph))
 }
 
+# Determine which libraries are used by the given procedure nodes.
+# Returns a vector of library names.  Returns an empty vector if no
+# libraries are used.
+get.libs.needed <- function (prov, proc_ids) {
+    # Get the data frame mapping function calls to procedure nodes
+    func.proc <- provParseR::get.func.proc(prov)
+
+    # Subset to include only the functions called for the procedure ids passed in    
+    funcs.called <- func.proc[func.proc$activity %in% proc_ids, ]
+
+    # Get the data frame mapping functions to libraries    
+    func.lib <- provParseR::get.func.lib(prov)
+
+    # Subset it to include only the functions called 
+    libraries_used <- func.lib[func.lib$func_id %in% funcs.called$func_id, ]
+
+    # Get all the library information    
+    all_libs <- provParseR::get.libs(prov)
+
+    # Subset the library info to only include the libraries used    
+    used_libs <- all_libs[all_libs$id %in% libraries_used$library, ]
+    
+    # Return the names of the libraries used
+    library_names <- unique (used_libs$name)
+    return (library_names)
+}
+
+
 #' Calculate lineage of a node
 #' 
 #' get.lineage returns either the list of nodes that the provided node depends
@@ -144,11 +172,16 @@ create.graph <- function(prov.input = NULL, isFile = TRUE){
 #' get.lineage (adj.graph, "d24")
 #' 
 #' @seealso \code{\link{create.graph}}
-get.lineage <- function(adj.graph, node.id, forward = FALSE){
-  if (class (adj.graph) == "ProvGraphInfo") {
-    adj.graph <- adj.graph@adj.graph
+get.lineage <- function(graph, node.id, forward = FALSE){
+  if (class (graph) == "ProvGraphInfo") {
+    adj.graph <- graph@adj.graph
+    prov <- graph@prov
   }
-  
+  else {
+    adj.graph <- graph
+    prov <- NULL
+  }
+    
   if(!forward){
     ig <- igraph::graph_from_adjacency_matrix(adj.graph)
   } else {
@@ -194,9 +227,17 @@ get.lineage <- function(adj.graph, node.id, forward = FALSE){
   else {
     # Data node should precede its producer
     id <- c (seq_along(sorted.proc.nodes), data.creator.indices - 0.5)
-    
-    # Figure out which libraries should be loaded
-    provParseR::get.libs.needed (prov, sorted.proc.nodes)
+
+    # Figure out which libraries should be loaded.  This is just a start.
+    # What we want to do is to then insert the library calls in the right
+    # place within the lineage.
+    if (!is.null(prov)) {
+    	get.libs.needed (prov, sorted.proc.nodes)
+    }
+    else {
+        # Can this ever happen?
+        print ("prov is NULL")
+    }
   }
   
   # Now sort the lineage based on the order we just produced.

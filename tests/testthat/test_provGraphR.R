@@ -122,3 +122,32 @@ test_that ("order", {
       expect_equal (lineage, 
           c("d1", "p3", "d2", "p4", "d3", "p5", "d4"))
 })
+
+## Find the libraries needed in a lineage
+test_that ("get.libs.needed", {
+      test.data.file <- system.file("testdata", "library.json", package = "provGraphR")
+      adj.graph <- create.graph(test.data.file)
+      ig <- igraph::graph_from_adjacency_matrix(adj.graph@adj.graph)
+
+      # One library should be included in result
+      print ("\n\n**** Should find stringi")
+      lineage <- as.character(stats::na.omit(names(igraph::dfs(ig, "p5", "out" , unreachable = FALSE)$order)))
+      proc.nodes <- lineage [startsWith(lineage, "p")]
+      sorted.proc.nodes <- sort (proc.nodes, decreasing = TRUE)
+      print ("Lineage")
+      print (lineage)
+	  libs <- get.libs.needed (adj.graph@prov, sorted.proc.nodes)
+	  expect_equal (libs, "stringi")
+	  
+	  # No libraries should be included in result
+	  print ("\n\n**** Should find no libraries")
+	  lineage <- as.character(stats::na.omit(names(igraph::dfs(ig, "p4", "out" , unreachable = FALSE)$order)))
+      proc.nodes <- lineage [startsWith(lineage, "p")]
+      sorted.proc.nodes <- sort (proc.nodes, decreasing = TRUE)
+      print ("Lineage")
+      print (lineage)
+	  libs <- get.libs.needed (adj.graph@prov, sorted.proc.nodes)
+	  expect_equal (length(libs), 0)
+	  
+})
+
